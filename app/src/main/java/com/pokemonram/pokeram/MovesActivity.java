@@ -35,15 +35,19 @@ public class MovesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_moves);
     }
 
+    //when the app starts
     protected void onStart(){
         super.onStart();
 
+        //get the setup for list view
         listViewSetup();
     }
 
+    //method for sorting the array in alphabetical order
     public static ArrayList<Move> sortMove(ArrayList<Move> move) {
         ArrayList<Move> sortedMove = move;
 
+        //check what name is first alphabetically
         Collections.sort(sortedMove, new Comparator<Move>() {
             public int compare(Move m1, Move m2) {
                 return m1.getMoveName().compareToIgnoreCase(m2.getMoveName());
@@ -55,12 +59,14 @@ public class MovesActivity extends AppCompatActivity {
     }
 
 
+    //set up the listview for the moves
     public void listViewSetup(){
         pokedex = new MyDatabase(this);
 
         ArrayList<Move> moveList = pokedex.getMoves();
         ArrayList<Move> sortedmoveList = sortMove(moveList);
 
+        //change arraylist to array
         String[] movesearch = new String[600];
         for(int i=0; i < 600; i++){
             Move a = sortedmoveList.get(i);
@@ -71,21 +77,27 @@ public class MovesActivity extends AppCompatActivity {
 
         ListView movesListView=(ListView)findViewById(R.id.movelist1);
         EditText inputsearchmove = (EditText)findViewById(R.id.edittext_movesallname);
+        
+        //set up the array adapter
         adapterMoves = new ArrayAdapter<String>(this,R.layout.move_listrow,R.id.name1,movesearch);
 
 
 
 
-
+        //was original adapter
         MovesAdapter pkmnAdd = new MovesAdapter(
                 this,
                 sortedmoveList
         );
-
+        
+        
+        //set the adapter
         movesListView.setAdapter(adapterMoves);
 
+        //set the on click listener
         movesListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                //changing intents if listview is pressed
                 Intent intent = new Intent(view.getContext(), DetailedPokemonActivity.class);
 
                 long dexNum = id+1;
@@ -94,7 +106,9 @@ public class MovesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        
+        
+        //auto fill in search
         inputsearchmove.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -126,6 +140,7 @@ public class MovesActivity extends AppCompatActivity {
 
 }
 
+//class for the moves adapter
 class MovesAdapter extends ArrayAdapter<Move>{
 
     private Context context;
@@ -144,11 +159,11 @@ class MovesAdapter extends ArrayAdapter<Move>{
         }
 
 
+        //set the text for name1
         ((TextView)convertView.findViewById(R.id.name1)).setText(move.moveName.toUpperCase());
         //((TextView)convertView.findViewById(R.id.typing1)).setText(move.type);
 
-        //((ImageView));
-        //((ImageView));
+       
 
         return convertView;
     }
