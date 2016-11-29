@@ -13,17 +13,21 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.ArrayList;
 
 /**
- * Created by 100522340 on 11/28/2016.
+ * Created by 100522340 & 100487239 on 11/28/2016.
  */
 
+//SQLiteAssetHelper allowed for us to implement our databse within our code and have access to it without having 
+//to create a whole new one within the program.
 public class MyDatabase extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "pokedex.db";
     private static final int DATABASE_VERSION = 1;
 
+    //this call will initiallize the database.
     public MyDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    //This method inserts every pokemon within the database as a pokemon object.
     public ArrayList<Pokemon> getPokemon(){
         SQLiteDatabase pokedex = this.getReadableDatabase();
         Cursor find = pokedex.query(
@@ -60,6 +64,8 @@ public class MyDatabase extends SQLiteAssetHelper {
         return pokemonList;
     }
 
+    //A seperate interpretation of our getPokemon method. This will store the pokemon as strings within a string array
+    //rather than keeping them all as objects
     public String[] listPokemonNames(ArrayList<Pokemon> pokemon){
         String[] pokemonList = new String[721];
 
@@ -71,6 +77,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return pokemonList;
     }
 
+    //this method will fetch all the base stats for each individual pokemon, storing them within a Stats object.
     public ArrayList<Stats> getPokemonStats(){
         SQLiteDatabase pokedex = this.getReadableDatabase();
         int hpStat = 0;
@@ -94,6 +101,7 @@ public class MyDatabase extends SQLiteAssetHelper {
 
         find.moveToFirst();
 
+        //We implemented several if statements in order to properly place each stat within the right variable.
         while(!(find.isAfterLast())){
             int speciesID = Integer.parseInt(find.getString(find.getColumnIndex("pokemon_id")));
             int stat = Integer.parseInt(find.getString(find.getColumnIndex("stat_id")));
@@ -126,6 +134,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return pokemonStats;
     }
 
+   //This method will find every ability that a pokemon can aquire and place it within a string array.
     public String[] getAbilities(){
         SQLiteDatabase pokedex = this.getReadableDatabase();
         String[] pokemonAbilities = new String[192];
@@ -141,7 +150,6 @@ public class MyDatabase extends SQLiteAssetHelper {
                 null);
 
         find2.moveToFirst();
-        //pokemonAbilities[0] = "";
 
         while(!(find2.isAfterLast())){
             int id = Integer.parseInt(find2.getString(find2.getColumnIndex("id")));
@@ -160,6 +168,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return pokemonAbilities;
     }
 
+    //this gets all abilities within the database, and inserted them into an array.
     public ArrayList<Ability> listAbilities(String[] abilities){
         ArrayList<Ability> abilityList = new ArrayList<>();
 
@@ -172,6 +181,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return abilityList;
     }
 
+    //the ArrayList variant. This kind of implementation allows us to do several interesting things
     public String[] findAbilities(String[] pokemonAbilities, int id){
         SQLiteDatabase pokedex = this.getReadableDatabase();
         String[] specificAbilities = new String[3];
@@ -209,6 +219,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return specificAbilities;
     }
 
+    //This method will pull all known pokemon types from the database and insert them into a string array.
     public String[] getTypes() {
         SQLiteDatabase pokedex = this.getReadableDatabase();
         String[] types = new String[19];
@@ -243,6 +254,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return types;
     }
 
+    //This method will match up a pokemon with its respective type(s)
     public String[] findTyping(String[] types, int reference) {
         SQLiteDatabase pokedex = this.getReadableDatabase();
         String[] specificType = new String[2];
@@ -279,6 +291,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return specificType;
     }
 
+    //This method will compile all known pokemon techniques and their respective type and store them within an array list
     public ArrayList<Move> getMoves() {
         SQLiteDatabase pokedex = this.getReadableDatabase();
         ArrayList<Move> movepool = new ArrayList<>();
@@ -369,6 +382,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return movepool;
     }
 
+    //this method is a variant of the method before. it gives us more freedom with what we can do within the app
     public String[] getMoveList(ArrayList<Move> moves){
         String[] moveList = new String[621];
 
@@ -380,6 +394,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         return moveList;
     }
 
+    //This method will match a specific pokemon with its unique move-set 
     public ArrayList<Move> getMoveSet(ArrayList<Move> movepool, int reference){
         SQLiteDatabase pokedex = this.getReadableDatabase();
         ArrayList<Move> moveset = new ArrayList<>();
