@@ -1,9 +1,10 @@
 package com.pokemonram.pokeram.Data;
 
 /**
- * Created by 100522340 on 11/28/2016.
+ * Created by 100522340 & 100487239 on 11/28/2016.
  */
 
+//The object stat that holds the national dec number of a specific pokemon and an integer of ever base stat within the game
 public class Stats {
     public int speciesNum;
     public int hpStat;
