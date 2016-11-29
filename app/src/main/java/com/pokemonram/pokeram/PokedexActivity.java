@@ -28,6 +28,7 @@ import com.pokemonram.pokeram.Database.MyDatabase;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+//The activity that acesses the pokedex
 public class PokedexActivity extends AppCompatActivity {
 
     private MyDatabase pokedex;
@@ -42,38 +43,34 @@ public class PokedexActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
 
-        listViewSetup();
+        listViewSetup();//sets up the list at the start of the activity
     }
 
+    //The method that creates the list
     public void listViewSetup(){
         pokedex = new MyDatabase(this);
 
+        //gets the list opf pokemon
         ArrayList<Pokemon> pokemonList = pokedex.getPokemon();
         String[] pokemon = pokedex.listPokemonNames(pokemonList);
 
-
-
+        //makes the pokemon and the pokedex number 
         ListView pokemonListView=(ListView)findViewById(R.id.listview_pokedex);
         EditText inputsearchpokemon = (EditText)findViewById(R.id.edittext_pkmnname);
 
-
+        //
         String[] pokemonsearch = new String[721];
         for(int i=0; i < 721; i++){
             Pokemon a = pokemonList.get(i);
             pokemonsearch[i] = (a.name).toUpperCase();
         }
-
-
-
-
-        //String[] abilitysearch = pokedex.getAbilities();
+        
+        //The adapter to load each pokemon into the list
         adapterpokemon = new ArrayAdapter<String>(this,R.layout.pokemon_listrow,R.id.textview_pokemonlistrow,pokemonsearch);
-
-
 
         pokemonListView.setAdapter(adapterpokemon);
 
-
+        //allows each item in the list to be clickable
         pokemonListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent intent = new Intent(view.getContext(), DetailedPokemonActivity.class);
@@ -81,11 +78,10 @@ public class PokedexActivity extends AppCompatActivity {
                 long dexNum = id+1;
                 intent.putExtra("dexNum", dexNum);
 
+                //starts the pokemon viewing activity
                 startActivity(intent);
             }
         });
-
-
 
         inputsearchpokemon.addTextChangedListener(new TextWatcher() {
 
@@ -117,6 +113,7 @@ public class PokedexActivity extends AppCompatActivity {
 
 }
 
+//The adapter that allows for our pokemon to be inserted into the list
 class PokedexAdapter extends ArrayAdapter<Pokemon>{
 
     private Context context;
@@ -125,6 +122,7 @@ class PokedexAdapter extends ArrayAdapter<Pokemon>{
         super(context, 0, pokemon);
     }
 
+    //Gives the list item the pokemon name 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Pokemon pokemon = getItem(position);
@@ -134,11 +132,7 @@ class PokedexAdapter extends ArrayAdapter<Pokemon>{
         }
 
         ((TextView)convertView.findViewById(R.id.textview_pokemonlistrow)).setText(pokemon.name.toUpperCase());
-        //((TextView)convertView.findViewById(R.id.textview_pokemonidlistrow)).setText(pokemon.speciesNum);
-
-        //((ImageView));
-        //((ImageView));
-
+        
         return convertView;
     }
 
