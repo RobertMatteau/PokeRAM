@@ -6,21 +6,19 @@ package com.pokemonram.pokeram.Data;
 
 public class Ability {
 
-    private String name;
-    private String description;
+    public String abilities;
 
-    public Ability(String name, String description) {
+    public Ability(String abilities) {
 
-        this.name = name;
-        this.description = description;
+        this.abilities = abilities;
 
     }
 
-    public String getName() {
-        return name;
+    public String getAbilities() {
+        return abilities;
     }
 
-    public String getDescription() {
-        return description;
+    public void setAbilities(String abilities) {
+        this.abilities = abilities;
     }
 }

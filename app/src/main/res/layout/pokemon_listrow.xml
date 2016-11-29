@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/layout_listRow"
+    android:padding="10dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/miniplaceholder"
+        android:src="@drawable/mini_placeholder"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_gravity="start"
+        android:scaleType="fitCenter"/>
+        <!--android:layout_weight="1"-->
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="[NUM]"
+        android:gravity="start"
+
+        android:textSize="15sp"
+        android:layout_alignBottom="@+id/miniplaceholder"
+        android:layout_toEndOf="@+id/miniplaceholder"
+        android:layout_marginStart="5dp"
+        android:id="@+id/textview_pokemonidlistrow"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="."
+        android:layout_alignBottom="@+id/miniplaceholder"
+        android:textSize="15sp"
+        android:gravity="start"
+        android:layout_toEndOf="@+id/textview_pokemonidlistrow"
+        android:layout_marginStart="0dp"
+
+        android:id="@+id/textview_pokemonidlistrowperiod"/>
+        -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="[Pokemon]"
+        android:layout_alignBottom="@+id/miniplaceholder"
+        android:gravity="start"
+        android:textSize="15sp"
+        android:layout_toEndOf="@+id/miniplaceholder"
+        android:layout_marginStart="20dp"
+
+        android:id="@+id/textview_pokemonlistrow"/>
+
+
+    <!--
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/typeplaceholder2"
+        android:src="@drawable/none"
+        android:gravity="end"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/miniplaceholder"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/typeplaceholder1"
+        android:src="@drawable/none"
+        android:gravity="end"
+        android:layout_toStartOf="@id/typeplaceholder2"
+        android:layout_marginStart="5dp"
+        android:layout_alignBottom="@+id/miniplaceholder"
+        android:scaleType="fitCenter" />
+        -->
+
+
+
+</RelativeLayout>

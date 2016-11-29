@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_pokedex"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:gravity="center"
+android:background="@drawable/pokedex"
+tools:context="com.pokemonram.pokeram.AbilitiesActivity">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="0.5"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:weightSum="1">
+
+
+        <TextView
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Abilities"
+            android:textSize="35sp"
+            android:id="@+id/title_abilities"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="0.38" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_weight="0.31">
+
+        <EditText
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="start"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="7dp"
+            android:id="@+id/edittext_abilitiesallname"
+            android:clickable="true"
+            android:focusable="true"
+            android:enabled="true"
+            android:selectAllOnFocus="true"
+            android:focusableInTouchMode="true"
+            android:lines="1"
+            android:hint="@string/pokedex_init_title" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="345dp"
+        android:layout_marginTop="7dp"
+
+        android:background="@color/white"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:weightSum="1">
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="352dp"
+            android:id="@+id/abilityList"
+            android:focusable="true"
+            android:clickable="true"
+            android:headerDividersEnabled="false"
+            android:longClickable="true" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

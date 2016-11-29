@@ -10,7 +10,7 @@
     <color name="textColorDarkRed">#8e4242</color>
     <color name="textColorLight">#dfa2a8</color>
 
-    <!-- Type badge text and colours -->
+    <!-- badge text and colours -->
     <color name="type_text_color">#fbfbfb</color>
     <color name="grey_font">#ff9e9e9e</color>
     <color name="text_shadow">#7F000000</color>
@@ -38,7 +38,6 @@
     <!-- Miscellaneous colours -->
     <color name="textColorBlack">#000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="caught">#5cd65c</color>
 
 
 </resources>

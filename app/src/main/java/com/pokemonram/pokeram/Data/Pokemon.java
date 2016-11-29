@@ -8,44 +8,26 @@ import android.content.Context;
 
 import java.util.List;
 
-public class Pokemon {
+public class Pokemon{
+    public int id;
+    public String name;
+    public String speciesNum;
+    public int spriteId;
 
-    public List<Ability> abilities;
-    private int pokemonUniqueID;
-    private int pokemonNationalID;
-    private String name;
-
-    private int attack;
-    private int defence;
-    private int hp;
-    private int spAttack;
-    private int spDefence;
-    private int speed;
-
-    private List<Type> types;
-
-
-    public Pokemon(List<Ability> abilities, int pokemonUniqueID, int pokemonNationalID, String name,
-                   int attack, int defence, int hp, int spAttack, int spDefence, int speed, List<Type> types) {
-
-        this.pokemonUniqueID = pokemonUniqueID;
-        this.pokemonNationalID = pokemonNationalID;
+    public Pokemon(int id, String name, String speciesNum){
+        this.id = id;
         this.name = name;
-        this.attack = attack;
-        this.defence = defence;
-        this.hp = hp;
-        this.spAttack = spAttack;
-        this.spDefence = spDefence;
-        this.speed = speed;
-        this.types = types;
-        this.abilities = abilities;
-
-
-
+        this.speciesNum = speciesNum;
+    }
+    public int getSpriteId() {
+        return spriteId;
     }
 
+    public String getName() {
+        return name;
+    }
 
-
-
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }

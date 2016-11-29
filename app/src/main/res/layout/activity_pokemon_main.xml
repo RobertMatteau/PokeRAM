@@ -13,22 +13,36 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/textView"
         android:text="Hello World!" />
 
     <Button
         android:text="Pokedex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:id="@+id/button_pokedex_main"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button_pokedex_main" />
+        android:onClick="PokedexClick"
+        android:layout_marginTop="130dp" />
 
     <Button
-        android:text="Team"
+        android:text="Moves"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_pokedex_main"
-        android:layout_alignStart="@+id/button_pokedex_main"
-        android:layout_marginTop="40dp"
-        android:id="@+id/button_team_main" />
+        android:layout_below="@+id/button_team_main"
+        android:layout_alignStart="@+id/button_team_main"
+        android:layout_marginTop="14dp"
+        android:onClick="MovesClick"
+        android:id="@+id/button_moves_main" />
+
+    <Button
+        android:text="Abilities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_moves_main"
+        android:layout_alignStart="@+id/button_moves_main"
+        android:layout_marginTop="18dp"
+        android:onClick="AbilitiesClick"
+        android:id="@+id/button_abilities_main" />
 </RelativeLayout>
