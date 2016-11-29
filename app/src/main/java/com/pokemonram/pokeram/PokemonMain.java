@@ -23,9 +23,6 @@ public class PokemonMain extends AppCompatActivity {
 
         //This allows for the buttons to create sound when pushed
         mp = MediaPlayer.create(this,R.raw.rotom);
-
-
-
     }
 
     //Starts the Pokedex Activity
