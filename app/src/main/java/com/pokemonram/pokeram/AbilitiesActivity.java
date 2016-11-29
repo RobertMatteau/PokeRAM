@@ -34,12 +34,14 @@ public class AbilitiesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_abilities);
     }
 
+    //when the app starts up
     protected void onStart(){
         super.onStart();
 
         listViewSetup();
     }
 
+    //array list to sort the list view
     public static ArrayList<Ability> sortAbility(ArrayList<Ability> ability) {
         ArrayList<Ability> sortedAbility = ability;
 
@@ -54,6 +56,7 @@ public class AbilitiesActivity extends AppCompatActivity {
     }
 
 
+    //method to set up list view
     public void listViewSetup(){
         pokedex = new MyDatabase(this);
         String[] abilities = pokedex.getAbilities();
@@ -65,6 +68,7 @@ public class AbilitiesActivity extends AppCompatActivity {
         EditText inputsearch = (EditText)findViewById(R.id.edittext_abilitiesallname);
 
 
+        //changed arraylist to array
         String[] abilitysearch = new String[191];
         for(int i=0; i < 191; i++){
             Ability a = sortedabilityList.get(i);
@@ -83,9 +87,11 @@ public class AbilitiesActivity extends AppCompatActivity {
                 sortedabilityList
         );
 
+        //set the adapter
         //abilitiesListView.setAdapter(pkmnAdd);
         abilitiesListView.setAdapter(adapterability);
 
+        //set the on click listener
         abilitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 //Intent intent = new Intent(view.getContext(), DetailedPokemonActivity.class);
@@ -98,7 +104,7 @@ public class AbilitiesActivity extends AppCompatActivity {
         });
 
 
-
+        //method to allow for auto searching
         inputsearch.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -123,6 +129,7 @@ public class AbilitiesActivity extends AppCompatActivity {
 
 
 
+    //method for when the activity closes
     @Override
     protected void onDestroy(){
         super.onDestroy();
@@ -131,6 +138,7 @@ public class AbilitiesActivity extends AppCompatActivity {
 
 }
 
+//adapter class for getting the info to fill the list view rows
 class AbilityAdapter extends ArrayAdapter<Ability> {
 
     private Context context;
@@ -140,6 +148,7 @@ class AbilityAdapter extends ArrayAdapter<Ability> {
         this.context = context;
     }
 
+    //
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Ability ability = getItem(position);
@@ -149,6 +158,7 @@ class AbilityAdapter extends ArrayAdapter<Ability> {
         }
 
 
+        //set the text view
         ((TextView)convertView.findViewById(R.id.nameability)).setText(ability.abilities.toUpperCase());
 
         //((ImageView));
