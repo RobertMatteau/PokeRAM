@@ -18,6 +18,12 @@
     <string name="specialAttack">Special Attack: </string>
     <string name="specialDefense">Special Defense: </string>
     <string name="speed">Speed: </string>
+
+
     <string name="moves">Moves</string>
+    <string name="pokemon">Pokemon</string>
+    <string name="abilities">Abilities</string>
+    <string name="types">Types:</string>
+
 
 </resources>

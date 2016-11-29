@@ -80,7 +80,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
         getAbilities(reference);
         getTyping(reference);
 
-        
+
         pokedex.getReadableDatabase();
 
         ArrayList<Pokemon> pokemon = pokedex.getPokemon();

@@ -6,38 +6,39 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="@drawable/main_back"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.pokemonram.pokeram.PokemonMain">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:text="Hello World!" />
-
+        android:text="@string/app_name"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"/>
     <Button
-        android:text="Pokedex"
+        android:text="@string/pokemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_pokedex_main"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:onClick="PokedexClick"
         android:layout_marginTop="130dp" />
 
     <Button
-        android:text="Moves"
+        android:text="@string/moves"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_team_main"
-        android:layout_alignStart="@+id/button_team_main"
-        android:layout_marginTop="14dp"
+        android:layout_below="@+id/button_pokedex_main"
+        android:layout_alignEnd="@+id/button_pokedex_main"
+        android:layout_marginTop="150dp"
         android:onClick="MovesClick"
         android:id="@+id/button_moves_main" />
 
     <Button
-        android:text="Abilities"
+        android:text="@string/abilities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_moves_main"

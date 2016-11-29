@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="[Pokemon]"
+        android:text="@string/pokemon"
         android:layout_alignBottom="@+id/miniplaceholder"
         android:gravity="start"
         android:textSize="15sp"

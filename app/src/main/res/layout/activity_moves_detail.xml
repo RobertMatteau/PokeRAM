@@ -30,7 +30,7 @@
                     android:layout_width="84dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Moves"
+                    android:text="@string/moves"
                     android:textSize="20sp"
                     android:id="@+id/title_moves_detail"
                     android:layout_gravity="end"
