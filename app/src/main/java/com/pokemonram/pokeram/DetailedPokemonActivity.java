@@ -23,6 +23,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
    private MyDatabase pokedex;
 
+   //set up the on create functions
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +31,11 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
         pokedex = new MyDatabase(this);
 
+       //read from the database
         pokedex.getReadableDatabase();
         ArrayList<Pokemon> display = pokedex.getPokemon();
 
+       //intent set up
         Intent get = getIntent();
         long pokedexNumber = get.getLongExtra("dexNum", 0);
         int reference = ((int) pokedexNumber)-1;
@@ -44,6 +47,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
         Pokemon pkmnView = display.get((reference));
 
+       //set text
         String name = pkmnView.name;
         TextView nameText = (TextView) findViewById(R.id.pokemon_name);
         nameText.setText(name);
@@ -52,7 +56,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
     }
 
-
+   //metod for when the app starts up
     public void onStart(){
         super.onStart();
 
@@ -67,7 +71,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
         TextView numText = (TextView) findViewById(R.id.pokedex_number);
 
         numText.setText(pn);
-
+      //get the id for the pokemon
         Pokemon pkmnView = display.get((reference));
 
         String namepokemon = pkmnView.name;
@@ -85,6 +89,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
         ArrayList<Pokemon> pokemon = pokedex.getPokemon();
 
+       //pokemon names for internet resource images
         Pokemon pkmn = pokemon.get(reference-1);
         String name = pkmn.name;
 
@@ -205,6 +210,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
     }
 
+   //get the stats of the pokemon
     public void getStats(int reference){
         pokedex = new MyDatabase(this);
         ArrayList<Stats> statsArray = pokedex.getPokemonStats();
@@ -242,6 +248,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
         spdText.setText(spd);
     }
 
+   //get the abilities from the database and print it out
     public void getAbilities(int reference){
         pokedex = new MyDatabase(this);
         String[] allAbilities = pokedex.getAbilities();
@@ -261,12 +268,14 @@ public class DetailedPokemonActivity extends AppCompatActivity {
         ab3.setText(ability3);
 
     }
+   //get pokemon type form the database and print it out
     public void getTyping(int reference){
         pokedex = new MyDatabase(this);
         String[] allTypes = pokedex.getTypes();
 
         String[] pkmnType = pokedex.findTyping(allTypes, reference);
 
+       //get the types and print them out
         String type1 = pkmnType[0];
         TextView typeDisplay1 = (TextView) findViewById(R.id.typeView1);
         typeDisplay1.setText(type1);
@@ -277,6 +286,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
 
     }
 
+   //onclick transfer for activities
     public void onMovesClick(View v){
         Intent intent = new Intent(v.getContext(), MovesDetailActivity.class);
 
@@ -293,6 +303,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
         finish();
     }
 
+   //class for downloading the images
     class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
@@ -300,6 +311,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
             this.bmImage = bmImage;
         }
 
+       //get the bitmap images
         protected Bitmap doInBackground(String... urls){
             String urldisplay = urls[0];
             Bitmap mIcon = null;
@@ -307,6 +319,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
                 InputStream in = new java.net.URL(urldisplay).openStream();
                 mIcon = BitmapFactory.decodeStream(in);
             }
+           //exceptions if failed
             catch(Exception e){
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
@@ -314,6 +327,7 @@ public class DetailedPokemonActivity extends AppCompatActivity {
             return mIcon;
         }
 
+       //after execution
         protected void onPostExecute(Bitmap result){
             bmImage.setImageBitmap(result);
         }
