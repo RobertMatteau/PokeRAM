@@ -30,19 +30,23 @@ public class MovesDetailActivity extends AppCompatActivity {
         private MyDatabase pokedex;
         ArrayAdapter<String> adapterMovesDetail;
 
+        //code to run on creation of activity
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_moves_detail);
 
+                //acces database
             pokedex = new MyDatabase(this);
             pokedex.getReadableDatabase();
             ArrayList<Pokemon> pok = pokedex.getPokemon();
 
+                //get information from passed intent
             Intent get = getIntent();
             String ref = get.getStringExtra("dexNum");
             reference = Integer.parseInt(ref);
 
+                //set texts
             TextView title = (TextView)findViewById(R.id.title_moves_detail);
             Pokemon pkname = pok.get((reference-1));
             String move_title = pkname.name.toUpperCase();
@@ -64,9 +68,11 @@ public class MovesDetailActivity extends AppCompatActivity {
             listViewSetup();
         }
 
+        //method for sorting the moves alphabetically
     public static ArrayList<Move> sortMoveDetail(ArrayList<Move> move) {
         ArrayList<Move> sortedMoveDetail = move;
 
+            //sort the moves
         Collections.sort(sortedMoveDetail, new Comparator<Move>() {
             public int compare(Move m1, Move m2) {
                 return m1.getMoveName().compareToIgnoreCase(m2.getMoveName());
@@ -81,12 +87,14 @@ public class MovesDetailActivity extends AppCompatActivity {
     public void listViewSetup(){
         pokedex = new MyDatabase(this);
 
+            //arrayslist to get the specific moves of a pokemon
         ArrayList<Move> allMoves = pokedex.getMoves();
         ArrayList<Move> setMoves = pokedex.getMoveSet(allMoves, (reference));
         ArrayList<Move> sortedmoveDetailList = sortMoveDetail(setMoves);
 
 
 
+        //used for the auto search
         /*String[] movedetailsearch = new String[621];
         int i = 0;
         while(i < 621 ){
@@ -138,6 +146,7 @@ public class MovesDetailActivity extends AppCompatActivity {
 
         moveDetailListView.setAdapter(moveAdd);
 
+            //set the on click listener
         moveDetailListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 //Intent intent = new Intent(view.getContext(), DetailedPokemonActivity.class);
@@ -150,6 +159,7 @@ public class MovesDetailActivity extends AppCompatActivity {
         });
 
 
+            //was used for auto search but had issues with it not allowing extra strings
         /*
         inputsearch.addTextChangedListener(new TextWatcher() {
 
@@ -179,6 +189,7 @@ public class MovesDetailActivity extends AppCompatActivity {
         }
     }
 
+//set the original adapter values
     class MoveDetailAdapter extends ArrayAdapter<Move> {
 
         public MoveDetailAdapter(Context context, ArrayList<Move> movelist){
@@ -193,6 +204,8 @@ public class MovesDetailActivity extends AppCompatActivity {
             if(convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.move_detaillistview, parent, false);
             }
+                
+                //was used for getting and setting the text view
 
             ((TextView)convertView.findViewById(R.id.name)).setText(move.moveName.toUpperCase());
             ((TextView)convertView.findViewById(R.id.typing)).setText(move.type.toUpperCase());
